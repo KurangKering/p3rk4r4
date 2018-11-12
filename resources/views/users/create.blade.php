@@ -16,97 +16,115 @@
   <div class="col-sm-12">
     <div class="card-box">
 
+      @if (count($errors) > 0)
 
-            
-            {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+      <div class="alert alert-danger">
 
-            <div class="row">
+        <strong>Ooops!</strong> Ada Kesalahan.<br><br>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
+        <ul>
 
-                    <div class="form-group">
+           @foreach ($errors->all() as $error)
 
-                        <strong>Username:</strong>
+           <li>{{ $error }}</li>
 
-                        {!! Form::text('username', null, array('placeholder' => 'Username','class' => 'form-control')) !!}
+           @endforeach
 
-                    </div>
+       </ul>
 
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
+   </div>
 
-                    <div class="form-group">
+   @endif
+   
+   {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
 
-                        <strong>Name:</strong>
+   <div class="row">
 
-                        {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-                    </div>
+        <div class="form-group">
 
-                </div>
+            <strong>Username:</strong>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
+            {!! Form::text('username', null, array('placeholder' => 'Username','class' => 'form-control')) !!}
 
-                    <div class="form-group">
+        </div>
 
-                        <strong>Email:</strong>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-                        {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+        <div class="form-group">
 
-                    </div>
+            <strong>Name:</strong>
 
-                </div>
+            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
+        </div>
 
-                    <div class="form-group">
+    </div>
 
-                        <strong>Password:</strong>
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-                        {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+        <div class="form-group">
 
-                    </div>
+            <strong>Email:</strong>
 
-                </div>
+            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
+        </div>
 
-                    <div class="form-group">
+    </div>
 
-                        <strong>Confirm Password:</strong>
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-                        {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+        <div class="form-group">
 
-                    </div>
+            <strong>Password:</strong>
 
-                </div>
+            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
+        </div>
 
-                    <div class="form-group">
+    </div>
 
-                        <strong>Role:</strong>
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-                        {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
+        <div class="form-group">
 
-                    </div>
+            <strong>Confirm Password:</strong>
 
-                </div>
+            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
 
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        </div>
 
-                    <button type="submit" class="btn btn-info">Submit</button>
+    </div>
 
-                </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-            </div>
+        <div class="form-group">
 
-            {!! Form::close() !!}
-            
-        
+            <strong>Hak Akses:</strong>
+
+            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
+
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+
+        <button type="submit" class="btn btn-info">Submit</button>
+
+    </div>
+
+</div>
+
+{!! Form::close() !!}
 
 
-    </div> <!-- end card-box -->
+
+
+</div> <!-- end card-box -->
 </div> <!-- end col -->
 </div>
 

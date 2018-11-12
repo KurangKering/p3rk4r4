@@ -6,7 +6,18 @@
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <title>Zircos - Responsive Admin Dashboard Template</title>
+    <title>Perkara</title>
+
+    <!-- DataTables -->
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/dataTables.colVis.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('templates/horizontal/../plugins/datatables/fixedColumns.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
+
     <!-- App css -->
     <link href="{{ asset('templates/horizontal/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/horizontal/assets/css/core.css') }}" rel="stylesheet" type="text/css" />
@@ -45,13 +56,13 @@
                         <ul class="nav navbar-nav navbar-right pull-right">
                             <li class="navbar-c-items">
                                 <form role="search" class="navbar-left app-search pull-left hidden-xs">
-                                 <input type="text" placeholder="Search..." class="form-control">
-                                 <a href=""><i class="fa fa-search"></i></a>
-                             </form>
-                         </li>
+                                   <input type="text" placeholder="Search..." class="form-control">
+                                   <a href=""><i class="fa fa-search"></i></a>
+                               </form>
+                           </li>
 
 
-                         <li class="dropdown navbar-c-items">
+                           <li class="dropdown navbar-c-items">
                             <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('templates/horizontal/assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
                             <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                                 <li class="text-center">
@@ -81,7 +92,7 @@
         </div>
         <!-- end topbar-main -->
         @include('layouts.partials.navbar')
-         <!-- end navbar-custom -->
+        <!-- end navbar-custom -->
     </header>
     <!-- End Navigation Bar-->
     <div class="wrapper">
@@ -128,8 +139,40 @@
     <script src="{{ asset('templates/horizontal/assets/js/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('templates/horizontal/assets/js/jquery.scrollTo.min.js') }}"></script>
     <script src="{{ asset('templates/horizontal/../plugins/switchery/switchery.min.js') }}"></script>
+
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.bootstrap.js') }}"></script>
+
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/responsive.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.colVis.js') }}"></script>
+    <script src="{{ asset('templates/horizontal/../plugins/datatables/dataTables.fixedColumns.min.js') }}"></script>
+
+    <!-- init -->
+    <script src="{{ asset('templates/horizontal/assets/pages/jquery.datatables.init.js') }}"></script>
+
+    
+    {{-- SweetAlert --}}
+    <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
+
+
+    {{-- Axios --}}
+    <script src="{{ asset('plugins/axios/dist/axios.min.js') }}"></script>
+
     <!-- App js -->
     <script src="{{ asset('templates/horizontal/assets/js/jquery.core.js') }}"></script>
     <script src="{{ asset('templates/horizontal/assets/js/jquery.app.js') }}"></script>
+    
+    @yield('custom_js')
 </body>
 </html>

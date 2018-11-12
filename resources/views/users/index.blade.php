@@ -20,8 +20,9 @@
         <thead>
          <tr>
            <th>Nama</th>
+           <th>Username</th>
            <th>Email</th>
-           <th>Roles</th>
+           <th>Hak Akses</th>
            <th>Action</th>
          </tr>
        </thead>
@@ -29,6 +30,7 @@
          @foreach ($data as $key => $user)
          <tr>
           <td>{{ $user->name }}</td>
+          <td>{{ $user->username }}</td>
           <td>{{ $user->email }}</td>
           <td>
             @if(!empty($user->getRoleNames()))
@@ -39,9 +41,7 @@
           </td>
           <td style="white-space: nowrap; width: 1%">
             @if (Auth::check())
-            <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-
             @if (! (Auth::user()->id == $user->id))
             {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
@@ -64,6 +64,35 @@
 @endsection
 @section('custom_js')
 <script>
-  let $table    = $("#tbl-user").DataTable();
+  let $table= $("#tbl-user").DataTable();
+
+  $('form').on('click', 'input[type="submit"]', function(e) {
+    e.preventDefault();
+
+    swal({
+      icon : 'warning',
+      title : 'Hapus User!',
+      text : 'yakin ingin menghapus user ini ?',
+      buttons : {
+        'Batal' : {
+          className : 'btn btn-inverse'
+        },
+        'Hapus' : {
+          className : 'btn btn-danger'
+        },
+      },
+      closeOnClickOutside : false
+    })
+    .then(clicked => {
+      if (clicked == 'Hapus') {
+        $(this).parent().submit();
+      }
+
+    })
+
+    ;
+    
+  });
+  
 </script>
 @endsection
