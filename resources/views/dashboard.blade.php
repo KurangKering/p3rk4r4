@@ -1,31 +1,26 @@
-@extends('layouts.new_template')
-@section('page-heading')
-<div class="row wrapper border-bottom white-bg page-heading">
-	<div class="col-lg-10">
-		<h2>Dashboard</h2>
-		<ol class="breadcrumb">
-			<li>
-				<a href="index.html">Home</a>
-			</li>
-			<li>
-				<a>a</a>
-			</li>
-			<li class="active">
-				<strong>Static a</strong>
-			</li>
-		</ol>
-	</div>
-	<div class="col-lg-2">
-	</div>
-</div>
-@endsection
+@extends('layouts.template')
 @section('content')
-
+<!-- Page-Title -->
 <div class="row">
-	<div class="col-lg-12">
-		
-	</div>
-	
+  <div class="col-sm-12">
+    <div class="page-title-box">
+      <div class="btn-group pull-right">
+        
+      </div>
+      <h4 class="page-title">Dashboard</h4>
+    </div>
+  </div>
+</div>
+<!-- end page title end breadcrumb -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card-box"></div> <!-- end card-box -->
+</div> <!-- end col -->
 </div>
 
+@endsection
+@section('custom_js')
+<script>
+  
+</script>
 @endsection

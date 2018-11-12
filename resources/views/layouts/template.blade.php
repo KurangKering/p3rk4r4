@@ -56,13 +56,13 @@
                         <ul class="nav navbar-nav navbar-right pull-right">
                             <li class="navbar-c-items">
                                 <form role="search" class="navbar-left app-search pull-left hidden-xs">
-                                   <input type="text" placeholder="Search..." class="form-control">
-                                   <a href=""><i class="fa fa-search"></i></a>
-                               </form>
-                           </li>
+                                 <input type="text" placeholder="Search..." class="form-control">
+                                 <a href=""><i class="fa fa-search"></i></a>
+                             </form>
+                         </li>
 
 
-                           <li class="dropdown navbar-c-items">
+                         <li class="dropdown navbar-c-items">
                             <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('templates/horizontal/assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
                             <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                                 <li class="text-center">
@@ -71,32 +71,41 @@
                                 <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="menu-item">
-                        <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle">
-                            <div class="lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                        <!-- End mobile menu toggle-->
-                    </div>
+                                <li><a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><i class="ti-power-off m-r-5"></i> Logout
+                                </a>
+                            </li>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
                 </div>
-                <!-- end menu-extras -->
-            </div> <!-- end container -->
-        </div>
-        <!-- end topbar-main -->
-        @include('layouts.partials.navbar')
-        <!-- end navbar-custom -->
-    </header>
-    <!-- End Navigation Bar-->
-    <div class="wrapper">
-        <div class="container">
+            </div>
+            <!-- end menu-extras -->
+        </div> <!-- end container -->
+    </div>
+    <!-- end topbar-main -->
+    @include('layouts.partials.navbar')
+    <!-- end navbar-custom -->
+</header>
+<!-- End Navigation Bar-->
+<div class="wrapper">
+    <div class="container">
           {{--   <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">

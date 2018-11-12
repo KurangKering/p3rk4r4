@@ -17,11 +17,17 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', function() {
-	return view('layouts.template');
+
+Route::group(['middleware' => ['auth']], function() {
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/', 'DashboardController@index');
+
+
+	Route::group(['middleware' => ['role:Administrator']], function() {
+		Route::resource('users', 'UserController');
+
+	});
+
 });
 
-
-Route::resource('users', 'UserController');
 
