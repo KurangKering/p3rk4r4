@@ -46,5 +46,9 @@ return [
 		'8',
 		'9',
 		'10',
+	],
+	'status_perkara' => [
+		'1' => 'Berjalan',
+		'2' => 'Selesai',
 	]
 ];

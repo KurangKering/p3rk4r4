@@ -27,6 +27,8 @@
     <link href="{{ asset('templates/horizontal/assets/css/menu.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/horizontal/assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{  asset('templates/horizontal/../plugins/switchery/switchery.min.css') }}">
+
+    @yield('custom_css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -54,23 +56,15 @@
                     <!-- End Logo container-->
                     <div class="menu-extras">
                         <ul class="nav navbar-nav navbar-right pull-right">
-                            <li class="navbar-c-items">
-                                <form role="search" class="navbar-left app-search pull-left hidden-xs">
-                                 <input type="text" placeholder="Search..." class="form-control">
-                                 <a href=""><i class="fa fa-search"></i></a>
-                             </form>
-                         </li>
+                            
 
 
-                         <li class="dropdown navbar-c-items">
-                            <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('templates/horizontal/assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
+                           <li class="dropdown navbar-c-items">
+                            <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('templates/horizontal/assets/images/happy.png') }}" alt="user-img" class="img-circle"> </a>
                             <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                                 <li class="text-center">
-                                    <h5>Hi, John</h5>
+                                    <h5>Hi, {{ \Auth::user()->name }}</h5>
                                 </li>
-                                <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
                                 <li><a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"><i class="ti-power-off m-r-5"></i> Logout
