@@ -37,7 +37,8 @@
 @endif
 
 
-<table class="table table-bordered">
+<div class="table-responsive">
+    <table class="table table-bordered">
 
   <tr>
 
@@ -84,6 +85,7 @@
 @endforeach
 
 </table>
+</div>
 
 
 {!! $roles->render() !!}

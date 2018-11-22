@@ -105,7 +105,7 @@
 
             <strong>Hak Akses:</strong>
 
-            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
+            {!! Form::select('roles', $roles,null, array('class' => 'form-control')) !!}
 
         </div>
 

@@ -54,7 +54,8 @@
 
       </div>
       <div class="panel-body">
-        <table id="table-detail" class="table  table-bordered table-hover">
+        <div class="table-responsive">
+          <table id="table-detail" class="table  table-bordered table-hover">
           <thead>
             <tr>
               <th rowspan="2" width="1%">No</th>
@@ -102,6 +103,7 @@
             </tr>
           </tfoot>
         </table>
+        </div>
       </div>
     </div>
   </div>

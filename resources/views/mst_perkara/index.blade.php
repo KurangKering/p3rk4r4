@@ -16,28 +16,30 @@
   <div class="col-sm-12">
     <div class="card-box">
 
-      <table id="tbl-perkara"  class="table table-striped">
-        <thead>
-         <tr>
-           <th>Nama Perkara</th>
-           <th>Biaya Perkara</th>
-           <th width="1%">Action</th>
-         </tr>
-       </thead>
-       <tbody>
-         @foreach ($perkaras as $perkara)
-         <tr>
-           <td>{{ $perkara->nama }}</td>
-           <td>{{ rupiah($perkara->biaya) }}</td>
-           <td style="white-space: nowrap">
-            <a class="btn btn-primary" href="{{ route('mst_perkara.edit',$perkara->id) }}">Edit</a>
-            <a class="btn btn-danger" onclick="deletePerkara('{{ $perkara->id }}')">Delete</a>
-            
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+      <div class="table-responsive">
+        <table id="tbl-perkara"  class="table table-striped">
+          <thead>
+           <tr>
+             <th>Nama Perkara</th>
+             <th>Biaya Perkara</th>
+             <th width="1%">Action</th>
+           </tr>
+         </thead>
+         <tbody>
+           @foreach ($perkaras as $perkara)
+           <tr>
+             <td>{{ $perkara->nama }}</td>
+             <td>{{ rupiah($perkara->biaya) }}</td>
+             <td style="white-space: nowrap">
+              <a class="btn btn-primary" href="{{ route('mst_perkara.edit',$perkara->id) }}">Edit</a>
+              <a class="btn btn-danger" onclick="deletePerkara('{{ $perkara->id }}')">Delete</a>
+              
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
 
 
 

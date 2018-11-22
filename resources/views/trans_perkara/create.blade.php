@@ -42,7 +42,12 @@
         <div class="col-lg-6 col-lg-offset-3">
           <div class="form-group">
             <label for="" class="control-label">No Perkara</label>
-            <input type="text" class="form-control" name="no_perkara">          
+            @role('Administrator')
+            <input type="text" class="form-control" name="no_perkara" readonly>          
+
+            @elserole('Penggugat')
+            <input type="text" class="form-control" name="no_perkara" readonly value="{{ Auth::user()->no_perkara }}">          
+            @endrole
           </div>
           <div class="form-group">
             <label for="" class="control-label">Nama Perkara</label>
@@ -62,8 +67,9 @@
             @role('Administrator')
             
             <select name="penggugat_user_id" id="penggugat_user_id" class="form-control">
+              <option ></option>
               @foreach ($penggugats as $penggugat)
-              <option value="{{ $penggugat->id }}">{{ $penggugat->name }}</option>
+              <option data-no-perkara="{{ $penggugat->no_perkara }}" value="{{ $penggugat->id }}">{{ $penggugat->name }}</option>
               @endforeach
             </select>
             @elserole('Penggugat')
@@ -93,5 +99,15 @@
 @section('custom_js')
 <script>
 
+  $selectPenggugat = $("select[name='penggugat_user_id']");
+  $inputNoPerkara = $("input[name='no_perkara']");
+
+
+  $selectPenggugat.change(function(event) {
+
+    $option = $(this).children(':selected');
+
+    $inputNoPerkara.val($option.data('no-perkara'));
+  }); 
 </script>
 @endsection

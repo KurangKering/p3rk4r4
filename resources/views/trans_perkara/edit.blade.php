@@ -43,7 +43,7 @@
         <div class="col-lg-6 col-lg-offset-3">
           <div class="form-group">
             <label for="" class="control-label">No Perkara</label>
-            <input type="text" class="form-control" name="no_perkara" value="{{ $transaksi->no_perkara }}">          
+            <input type="text" class="form-control" name="no_perkara" readonly value="{{ $transaksi->no_perkara }}">          
           </div>
           <div class="form-group">
             <label for="" class="control-label">Nama Perkara</label>

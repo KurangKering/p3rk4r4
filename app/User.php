@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'username', 'name', 'email', 'password',
+       'username', 'name', 'email', 'password', 'no_perkara',
     ];
 
     /**
@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function trans_perkara()
     {
-        return $this->hasOne('App\TransPerkara');
+        return $this->hasMany('App\TransPerkara', 'penggugat_user_id');
     }
 }

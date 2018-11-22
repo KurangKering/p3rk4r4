@@ -16,7 +16,8 @@
   <div class="col-sm-12">
     <div class="card-box">
 
-      <table id="tbl-uraian"  class="table table-striped">
+      <div class="table-responsive">
+        <table id="tbl-uraian"  class="table table-striped">
         <thead>
          <tr>
            <th>Nama Uraian</th>
@@ -40,6 +41,7 @@
          @endforeach
        </tbody>
     </table>
+      </div>
 
 
 

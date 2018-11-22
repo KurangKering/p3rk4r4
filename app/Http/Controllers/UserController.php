@@ -26,8 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-    	$roles = Role::pluck('name','name')->all();
-    	return view('users.create',compact('roles'));
+        $roles = Role::orderBy('id', 'desc')->pluck('name','name')->all();
+        return view('users.create',compact('roles'));
     }
     /**
      * Store a newly created resource in storage.
@@ -35,21 +35,47 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
-    	$this->validate($request, [
-    		'name' => 'required',
+        $this->validate($request, [
+            'name' => 'required',
             'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-    	$input = $request->all();
-    	$input['password'] = Hash::make($input['password']);
-    	$user = User::create($input);
-    	$user->assignRole($request->input('roles'));
-    	return redirect()->route('users.index')
-    	->with('success','User created successfully');
+
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        
+        $lastPenggugat = User::role('Penggugat')->latest()->first();
+        $nextNo = '';
+        if (!$lastPenggugat) {
+            $nextNo = 1;
+        } else if ($lastPenggugat) {
+            if (in_array($lastPenggugat->no_perkara, ['', null ] )){
+                $nextNo = 1;
+            } else { 
+                $no_perkara = $lastPenggugat->no_perkara;
+
+                $no_perkara = explode('/', $no_perkara);
+
+                $nextNo = $no_perkara[0] + 1;
+            }
+        }
+
+        $year = date('Y');
+
+        $no_perkara = "$nextNo/g/$year/PTUN.PBR";
+
+        $input['no_perkara'] = $no_perkara;
+
+        $user = User::create($input);
+        $user->assignRole($request->input('roles'));
+        return redirect()->route('users.index')
+        ->with('success','User created successfully');
     }
     /**
      * Display the specified resource.
@@ -112,8 +138,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-    	User::find($id)->delete();
-    	return redirect()->route('users.index')
-    	->with('success','User deleted successfully');
+        $user = User::findOrFail($id);
+
+
+        $user->trans_perkara->each(function($i) {
+            $i->trans_perkara_det->each(function($ii) {
+                $ii->delete();
+            });
+
+            $i->delete();
+        });
+        $user->delete();
+        return redirect()->route('users.index')
+        ->with('success','User deleted successfully');
     }
 }
